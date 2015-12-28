@@ -1,6 +1,7 @@
 Session.setDefault('redValue', 0);
 Session.setDefault('greenValue', 0);
 Session.setDefault('blueValue', 0);
+Session.setDefault('alphaValue', 1.0);
 
 var redChange = function(event){
   if (event.target.name === 'red') {
@@ -20,6 +21,12 @@ var blueChange = function(event){
   }
 }
 
+var alphaChange = function(event){
+  if (event.target.name === 'alpha') {
+    return true;
+  }
+}
+
 Template.content.helpers({
   redValue: function(){
     return Session.get('redValue');
@@ -29,6 +36,9 @@ Template.content.helpers({
   },
   blueValue: function(){
     return Session.get('blueValue');
+  },
+  alphaValue:function(){
+    return Session.get('alphaValue');
   }
 });
 
@@ -43,6 +53,8 @@ Template.slider.events({
       Session.set('greenValue', event.target.value);
     }else if (blueChange(event)) {
       Session.set('blueValue', event.target.value);
+    }else if (alphaChange(event)) {
+      Session.set('alphaValue', event.target.value)
     }
   }
 });

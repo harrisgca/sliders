@@ -12,6 +12,7 @@
   <p>Red value is {{redValue}}.</p>
   <p>Green value is {{greenValue}}.</p>
   <p>Blue value is {{blueValue}}.</p>
+  <p>Alpha value is {{alphaValue}}</p>
 </template>
 
 <template name="slider">
@@ -25,5 +26,9 @@
 
   <form>
     <input type="range" name="blue" min="0" max="255" value="0">
+  </form>
+
+  <form>
+    <input type="range" name="alpha" min="0" max="1" step="0.1" value="1.0">
   </form>
 </template>
