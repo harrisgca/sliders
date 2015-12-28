@@ -8,23 +8,35 @@ var redChange = function(event){
     return true;
   }
 }
-
 var greenChange = function(event){
   if (event.target.name === 'green') {
     return true;
   }
 }
-
 var blueChange = function(event){
   if (event.target.name === 'blue') {
     return true;
   }
 }
-
 var alphaChange = function(event){
   if (event.target.name === 'alpha') {
     return true;
   }
+}
+var currentRed = function(){
+  return Session.get('redValue');
+}
+
+var currentBlue = function(){
+  return Session.get('blueValue');
+}
+
+var currentGreen = function(){
+  return Session.get('greenValue');
+}
+
+var currentAlpha = function(){
+  return Session.get('alphaValue');
 }
 
 Template.content.helpers({
@@ -44,9 +56,8 @@ Template.content.helpers({
 
 Template.slider.events({
   'input': function(event){
-    // console.log(event.target.value);
-    // console.log(event.target.name);
-    // Session.set('slideValue', event.target.value)
+    var newvalue = '';
+
     if (redChange(event)) {
       Session.set('redValue', event.target.value);
     }else if (greenChange(event)) {
@@ -55,6 +66,13 @@ Template.slider.events({
       Session.set('blueValue', event.target.value);
     }else if (alphaChange(event)) {
       Session.set('alphaValue', event.target.value)
-    }
+    }//end if/else
+
+    newValue = 'rgba(' + currentRed() + ',' + currentGreen() + ',' + currentBlue() + ',' + currentAlpha()+ ')';
+    console.log(newValue);
+
+    $("[data-id='box']")
+    // $(".box")
+      .css('background-color', newValue);
   }
 });
