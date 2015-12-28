@@ -4,11 +4,26 @@
 
 <body>
   <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+  {{> content}}
+  {{> slider}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="content">
+  <p>Red value is {{redValue}}.</p>
+  <p>Green value is {{greenValue}}.</p>
+  <p>Blue value is {{blueValue}}.</p>
+</template>
+
+<template name="slider">
+  <form name="red">
+    <input type="range" name="red" min="0" max="255" value="0">
+  </form>
+
+  <form>
+    <input type="range" name="green" min="0" max="255" value="0">
+  </form>
+
+  <form>
+    <input type="range" name="blue" min="0" max="255" value="0">
+  </form>
 </template>
